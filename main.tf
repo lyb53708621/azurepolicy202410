@@ -62,10 +62,10 @@ POLICY_RULE
 
 }
 
-#resource "azurerm_subscription_policy_assignment" "acr_sku_on_sub" {
-#  name                 = "acr_sku_on_sub"
-#  display_name = "acr_sku_acr_sku_on_sub_assignment_on_yibo_sub"
-#  policy_definition_id = azurerm_policy_definition.acr_premium_tier.id
-#  subscription_id      = data.azurerm_subscription.current.id
-#}
+resource "azurerm_subscription_policy_assignment" "acr_sku_on_sub" {
+  name                 = "acr_sku_on_sub"
+  display_name = "acr_sku_assignment_on_lyb53708621_sub"
+  policy_definition_id = azurerm_policy_definition.acr_premium_tier.id
+  subscription_id      = data.azurerm_subscription.current.id
+}
 
