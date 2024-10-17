@@ -1,6 +1,6 @@
-data "azurerm_management_group" "rootmg" {
-  name = "aa141e2a-a555-4d1b-a870-173addaf2cb3"
-}
+#data "azurerm_management_group" "rootmg" {
+#  name = "aa141e2a-a555-4d1b-a870-173addaf2cb3"
+#}
 
 data "azurerm_management_group" "devmg" {
   name = "Dev1"
@@ -8,9 +8,9 @@ data "azurerm_management_group" "devmg" {
 
 data "azurerm_subscription" "current" {}
 
-output "display_id" {
-  value = data.azurerm_management_group.rootmg.id
-}
+#output "display_id" {
+#  value = data.azurerm_management_group.rootmg.id
+#}
 
 output "display_submg_id" {
   value = data.azurerm_management_group.devmg
