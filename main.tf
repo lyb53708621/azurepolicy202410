@@ -2,9 +2,9 @@
 #  name = "aa141e2a-a555-4d1b-a870-173addaf2cb3"
 #}
 
-#data "azurerm_management_group" "devmg" {
-#  name = "Dev1"
-#}
+data "azurerm_management_group" "devmg" {
+  name = "Dev1"
+}
 
 data "azurerm_subscription" "current" {}
 
@@ -12,9 +12,9 @@ data "azurerm_subscription" "current" {}
 #  value = data.azurerm_management_group.rootmg.id
 #}
 
-#output "display_submg_id" {
-#  value = data.azurerm_management_group.devmg
-#}
+output "display_submg_id" {
+  value = data.azurerm_management_group.devmg.id
+}
 
 output "display_sub_id" {
   value = data.azurerm_subscription.current.id
@@ -29,8 +29,7 @@ resource "azurerm_policy_definition" "acr_premium_tier" {
   name         = "acrpremiumtier"
   policy_type  = "Custom"
   mode         = "All"
-#  management_group_id = data.azurerm_management_group.devmg.id
-  management_group_id = "Dev1"
+  management_group_id = data.azurerm_management_group.devmg.id
   display_name = "Audit premium service tier must be used for Container Registry - TF"
 
   metadata = <<METADATA
