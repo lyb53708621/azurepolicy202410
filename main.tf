@@ -13,7 +13,7 @@ data "azurerm_subscription" "current" {}
 #}
 
 output "display_submg_id" {
-  value = data.azurerm_management_group.devmg.id
+  value = data.azurerm_management_group.devmg.display_name
 }
 
 output "display_sub_id" {
@@ -22,7 +22,7 @@ output "display_sub_id" {
 
 #########################################################################
 #
-#
+# Test
 #
 #########################################################################
 resource "azurerm_policy_definition" "acr_premium_tier" {
