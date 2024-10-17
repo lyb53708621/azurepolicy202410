@@ -57,6 +57,7 @@ jobs:
     name: 'Terraform'
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
     runs-on: ubuntu-latest
@@ -66,7 +67,7 @@ jobs:
     defaults:
       run:
         shell: bash
-#        working-directory: ./main     # ${{ github.workspace}}/main
+        working-directory: ./main     # ${{ github.workspace}}/main
 
     steps:
     # Checkout the repository to the GitHub Actions runner
