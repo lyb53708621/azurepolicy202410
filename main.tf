@@ -69,3 +69,26 @@ resource "azurerm_subscription_policy_assignment" "acr_sku_on_sub" {
   subscription_id      = data.azurerm_subscription.current.id
 }
 
+data "azurerm_resource_group" "acr_terraform_rg" {
+  name = "acr_terraform_test"
+}
+
+
+resource "azurerm_resource_group_policy_assignment" "acr_terraform_rg_check" {
+  name                 = "acr_terraform_rg_check"
+  display_name         = "acr_check_for_rg_acr_terraform"
+  resource_group_id    = azurerm_resource_group.acr_terraform_rg.id
+  policy_definition_id = azurerm_policy_definition.acr_premium_tier.id
+
+  parameters = <<PARAMS
+    {
+      "tagName": {
+        "value": "Business Unit"
+      },
+      "tagValue": {
+        "value": "BU"
+      }
+    }
+PARAMS
+}
+
