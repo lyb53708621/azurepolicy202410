@@ -120,6 +120,7 @@ resource "azurerm_policy_set_definition" "acr_policy_set" {
                 "displayName": "Allowed locations",
                 "strongType": "location"
             }
+            "defaultValue": "East Asia"
         }
     }
 PARAMETERS
