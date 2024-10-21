@@ -133,7 +133,7 @@ PARAMETERS
   }
 
   policy_definition_reference {
-    policy_definition_id = data.azurerm_policy_definition.allowed_location.id
+    policy_definition_id = data.azurerm_policy_definition_built_in.allowed_location.id
     parameter_values     = <<VALUE
     {
       "listOfAllowedLocations": {"value": "[parameters('allowedLocations')]"}
