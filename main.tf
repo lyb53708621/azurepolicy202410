@@ -115,12 +115,13 @@ resource "azurerm_policy_set_definition" "acr_policy_set" {
     {
         "allowedLocations": {
             "type": "Array",
+            "defaultValue": "East Asia",
             "metadata": {
                 "description": "The list of allowed locations for resources.",
                 "displayName": "Allowed locations",
                 "strongType": "location"
             }
-            "defaultValue": "East Asia"
+
         }
     }
 PARAMETERS
