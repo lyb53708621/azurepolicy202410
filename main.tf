@@ -20,6 +20,14 @@ data "azurerm_policy_definition_built_in" "acr_disable_public_access" {
   display_name = "Public network access should be disabled for Container registries"
 }
 
+data "azurerm_policy_definition_built_in" "allowed_location" {
+  display_name = "Allowed locations"
+}
+
+output "allowed_location_policy_id" {
+  value = data.azurerm_policy_definition_built_in.allowed_location.id
+}
+
 output "acr_disable_public_access_policy_id" {
   value = data.azurerm_policy_definition_built_in.acr_disable_public_access.id
 }
@@ -103,12 +111,34 @@ resource "azurerm_policy_set_definition" "acr_policy_set" {
   management_group_id = data.azurerm_management_group.devmg.id
   display_name = "Yibo ACR Terraform Policy Set"
 
+  parameters = <<PARAMETERS
+    {
+        "allowedLocations": {
+            "type": "Array",
+            "metadata": {
+                "description": "The list of allowed locations for resources.",
+                "displayName": "Allowed locations",
+                "strongType": "location"
+            }
+        }
+    }
+PARAMETERS
+
   policy_definition_reference {
     policy_definition_id = data.azurerm_policy_definition_built_in.acr_disable_public_access.id
   }
 
   policy_definition_reference {
     policy_definition_id = azurerm_policy_definition.acr_premium_tier.id
+  }
+
+  policy_definition_reference {
+    policy_definition_id = data.azurerm_policy_definition.allowed_location.id
+    parameter_values     = <<VALUE
+    {
+      "listOfAllowedLocations": {"value": "[parameters('allowedLocations')]"}
+    }
+    VALUE
   }
 
 }
