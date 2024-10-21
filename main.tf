@@ -12,9 +12,9 @@ data "azurerm_subscription" "current" {}
 #  value = data.azurerm_management_group.rootmg.id
 #}
 
-data "azurerm_resource_group" "acr_terraform_rg" {
-  name = "acr_terraform_test"
-}
+# data "azurerm_resource_group" "acr_terraform_rg" {
+#   name = "acr_terraform_test"
+# }
 
 data "azurerm_policy_definition_built_in" "acr_disable_public_access" {
   display_name = "Public network access should be disabled for Container registries"
@@ -32,9 +32,9 @@ output "acr_disable_public_access_policy_id" {
   value = data.azurerm_policy_definition_built_in.acr_disable_public_access.id
 }
 
-output "display_rg_id" {
-  value = data.azurerm_resource_group.acr_terraform_rg.id
-}
+# output "display_rg_id" {
+#   value = data.azurerm_resource_group.acr_terraform_rg.id
+# }
 
 output "display_submg_id" {
   value = data.azurerm_management_group.devmg.display_name
@@ -86,19 +86,19 @@ POLICY_RULE
 
 }
 
-resource "azurerm_subscription_policy_assignment" "acr_sku_on_sub" {
-  name                 = "acr_sku_on_sub"
-  display_name = "acr_sku_assignment_on_lyb53708621_sub"
-  policy_definition_id = azurerm_policy_definition.acr_premium_tier.id
-  subscription_id      = data.azurerm_subscription.current.id
-}
+# resource "azurerm_subscription_policy_assignment" "acr_sku_on_sub" {
+#   name                 = "acr_sku_on_sub"
+#   display_name = "acr_sku_assignment_on_lyb53708621_sub"
+#   policy_definition_id = azurerm_policy_definition.acr_premium_tier.id
+#   subscription_id      = data.azurerm_subscription.current.id
+# }
 
-resource "azurerm_resource_group_policy_assignment" "acr_terraform_rg_check" {
-  name                 = "acr_terraform_rg_check"
-  display_name         = "acr_check_for_rg_acr_terraform"
-  resource_group_id    = data.azurerm_resource_group.acr_terraform_rg.id
-  policy_definition_id = azurerm_policy_definition.acr_premium_tier.id
-}
+# resource "azurerm_resource_group_policy_assignment" "acr_terraform_rg_check" {
+#   name                 = "acr_terraform_rg_check"
+#   display_name         = "acr_check_for_rg_acr_terraform"
+#   resource_group_id    = data.azurerm_resource_group.acr_terraform_rg.id
+#   policy_definition_id = azurerm_policy_definition.acr_premium_tier.id
+# }
 
 #########################################################################
 #
