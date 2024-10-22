@@ -130,9 +130,9 @@ PARAMETERS
     policy_definition_id = data.azurerm_policy_definition_built_in.acr_disable_public_access.id
   }
 
-  policy_definition_reference {
-    policy_definition_id = azurerm_policy_definition.acr_premium_tier.id
-  }
+  # policy_definition_reference {
+  #   policy_definition_id = azurerm_policy_definition.acr_premium_tier.id
+  # }
 
   policy_definition_reference {
     policy_definition_id = data.azurerm_policy_definition_built_in.allowed_location.id
