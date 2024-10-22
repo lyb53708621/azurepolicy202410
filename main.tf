@@ -73,7 +73,7 @@ METADATA
           {
             "not": {
               "field": "Microsoft.ContainerRegistry/registries/sku.tier",
-              "equals": "Standard"
+              "equals": "Premium"
             }
           }
         ]
