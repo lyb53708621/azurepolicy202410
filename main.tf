@@ -50,7 +50,7 @@ output "display_sub_id" {
 #
 #########################################################################
 resource "azurerm_policy_definition" "acr_premium_tier" {
-  name         = "acrpremiumtier"
+  name         = "Audit premium service tier must be used for Container Registry - TF"
   policy_type  = "Custom"
   mode         = "All"
   management_group_id = data.azurerm_management_group.devmg.id
